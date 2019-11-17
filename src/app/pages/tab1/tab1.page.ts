@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { NavigationExtras } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -8,7 +8,7 @@ import { NavigationExtras } from '@angular/router';
   styleUrls: ['./tab1.page.scss'],
 })
 export class Tab1Page implements OnInit {
-// item= [];
+
   data =[
     {
       title: "Bag 1",
@@ -30,7 +30,7 @@ export class Tab1Page implements OnInit {
     }
   ]
 
-  constructor(private toast: ToastController) { }
+  constructor(private toast: ToastController, private router: Router) { }
 
   async presentToast(message: any){
     const toast = await this.toast.create({
@@ -48,16 +48,17 @@ export class Tab1Page implements OnInit {
     console.log("Data bag ", this.data);
   }
 
-  // submit(id){
-  //   this.data
-  // //   console.log("Data bag ", item);
-  // //   console.log("Data bag ", id);
-  // //   let navigationExtras: NavigationExtras ={
-  // //     state: {
-  // //       item: item
-  // //     }
-  // //   }
-  // // }
+  submit(id){
+    
+    console.log("Data bag ", this.data[id]);
+    
+    let navigationExtras: NavigationExtras ={
+      state: {
+        data: this.data[id]
+      }
+    }
+    this.router.navigate(['view'], navigationExtras);
+  }
 
 
 

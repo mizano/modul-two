@@ -6,8 +6,8 @@
 
 <ion-content>
 <ion-grid>
-  <ion-row *ngFor="let item of data">
-    <ion-card (click)="presentToast(item.title)">
+  <ion-row *ngFor="let item of data; let i=index;">
+    <ion-card (click)="submit(i)">
       <ion-card-header>
         <ion-card-subtitle>{{item.title}}</ion-card-subtitle>
         <ion-card-title>{{item.description}}</ion-card-title>
